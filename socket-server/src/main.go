@@ -19,11 +19,10 @@ var upgrader = websocket.Upgrader{
 	},
 }
 
-// Define our message object
+// Message struct for incoming message payloads
 type Message struct {
-	Email    string `json:"email"`
-	Username string `json:"username"`
-	Message  string `json:"message"`
+	Y float64 `json:"y"`
+	X float64 `json:"x"`
 }
 
 func main() {

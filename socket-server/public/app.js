@@ -1,3 +1,4 @@
+var start, end;
 new Vue({
     el: '#app',
 
@@ -14,37 +15,40 @@ new Vue({
         var self = this;
         this.ws = new WebSocket('ws://' + window.location.host + '/ws');
         this.ws.addEventListener('message', function (e) {
-            console.log(e)
             var msg = JSON.parse(e.data);
+            end = performance.now();
+            console.log(start, end);
+            console.log(end - start);
+            console.log(e);
             // console.log(msg)
         });
     },
 
     methods: {
         send: function () {
-            if (this.newMsg != '') {
-                this.ws.send(
-                    JSON.stringify({
-                        email: this.email,
-                        username: this.username,
-                        message: $('<p>').html(this.newMsg).text() // Strip out html
-                    }
-                ));
-                this.newMsg = ''; // Reset newMsg
-            }
+            // if (this.newMsg != '') {
+            start = performance.now();
+            this.ws.send(
+                JSON.stringify({
+                    x: 101.3, //$('<p>').html(this.newMsg).text() // Strip out html
+                    y: 103.4
+                }
+            ));
+            this.newMsg = ''; // Reset newMsg
+            // }
         },
 
         join: function () {
-            if (!this.email) {
-                Materialize.toast('You must enter an email', 2000);
-                return
-            }
-            if (!this.username) {
-                Materialize.toast('You must choose a username', 2000);
-                return
-            }
-            this.email = $('<p>').html(this.email).text();
-            this.username = $('<p>').html(this.username).text();
+            // if (!this.email) {
+            //     Materialize.toast('You must enter an email', 2000);
+            //     return
+            // }
+            // if (!this.username) {
+            //     Materialize.toast('You must choose a username', 2000);
+            //     return
+            // }
+            this.email = 'rob'; //'$('<p>').html(this.email).text()';
+            this.username = 'rob'; //$('<p>').html(this.username).text();
             this.joined = true;
         },
 

@@ -26,12 +26,12 @@ var homeTemplate = template.Must(template.New("").Parse(`
 	<head>
 	<meta charset="utf-8">
 	<script>
-		var t0 = performance.now();
+		var start = performance.now();
 		fetch('http://3.19.66.26:3000/data')
 			.then(response => response.json())
 			.then(res => {
-				var t1 = performance.now();
-				console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.");
+				var end = performance.now();
+				console.log("Call to doSomething took " + (end - start) + " milliseconds.");
 				console.log(res)
 			});
 	</script>
