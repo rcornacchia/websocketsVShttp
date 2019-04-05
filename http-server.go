@@ -26,14 +26,26 @@ var homeTemplate = template.Must(template.New("").Parse(`
 	<head>
 	<meta charset="utf-8">
 	<script>
-		var start = performance.now();
-		fetch('http://3.19.66.26:3000/data')
-			.then(response => response.json())
-			.then(res => {
-				var end = performance.now();
-				console.log("Call to doSomething took " + (end - start) + " milliseconds.");
-				console.log(res)
-			});
+		var avg = 0;
+		var total = 0;
+		var count = 0;
+		var start, end;
+		document.onclick = () => {
+			count++;
+			start = performance.now();
+			fetch('http://3.19.66.26:3000/data')
+				.then(response => response.json())
+				.then(res => {
+					end = performance.now();
+					console.log((end - start) + " milliseconds.");
+					console.log(res)
+
+					var time = end - start;
+					total += time;
+					avg = total / count;
+					console.log(count, avg)
+				});
+		}
 	</script>
 	</head>
 	</html>
