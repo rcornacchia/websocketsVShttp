@@ -74,7 +74,6 @@ func handleMessages() {
 	for {
 		// Grab the next message from the broadcast channel
 		msg := <-broadcast
-		fmt.Println(msg)
 
 		// var jsonBuffer []byte
 		// json.Unmarshal(jsonBuffer, &message)
@@ -92,6 +91,7 @@ func handleMessages() {
 				log.Printf("error: %v", err)
 				client.Close()
 				delete(clients, client)
+				fmt.Println(msg)
 			}
 		}
 	}
