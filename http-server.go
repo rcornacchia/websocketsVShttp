@@ -29,9 +29,11 @@ var homeTemplate = template.Must(template.New("").Parse(`
 		var t0 = performance.now();
 		fetch('http://3.19.66.26:3000/data')
 			.then(response => response.json())
-			.then(res => console.log(res));
-		var t1 = performance.now();
-		console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.");
+			.then(res => {
+				var t1 = performance.now();
+				console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.");
+				console.log(res)
+			});
 	</script>
 	</head>
 	</html>
