@@ -38,7 +38,6 @@ var homeTemplate = template.Must(template.New("").Parse(`
 				.then(res => {
 					end = performance.now();
 					console.log((end - start) + " milliseconds.");
-					console.log(res)
 
 					var time = end - start;
 					total += time;
