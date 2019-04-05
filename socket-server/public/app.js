@@ -21,7 +21,6 @@ new Vue({
         this.ws.addEventListener('message', function (e) {
             var msg = JSON.parse(e.data);
             end = performance.now();
-            console.log(start, end);
             var time = end - start;
             console.log(time + " milliseconds.");
 
