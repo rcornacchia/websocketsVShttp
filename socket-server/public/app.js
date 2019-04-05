@@ -1,4 +1,8 @@
 var start, end;
+var avg = 0;
+var total = 0;
+var count = 0;
+
 new Vue({
     el: '#app',
 
@@ -18,15 +22,20 @@ new Vue({
             var msg = JSON.parse(e.data);
             end = performance.now();
             console.log(start, end);
-            console.log(end - start);
-            console.log(e);
-            // console.log(msg)
+            var time = end - start;
+            console.log(time + " milliseconds.");
+
+            total += time;
+            avg = total / count;
+            console.log(count, avg)
         });
     },
 
     methods: {
         send: function () {
             // if (this.newMsg != '') {
+            count++;
+
             start = performance.now();
             this.ws.send(
                 JSON.stringify({
