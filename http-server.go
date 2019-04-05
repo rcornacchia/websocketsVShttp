@@ -33,7 +33,7 @@ var homeTemplate = template.Must(template.New("").Parse(`
 		document.onclick = () => {
 			count++;
 			start = performance.now();
-			fetch('http://3.19.66.26:3000/data')
+			fetch('http://54.206.60.242:3000/data')
 				.then(response => response.json())
 				.then(res => {
 					end = performance.now();
